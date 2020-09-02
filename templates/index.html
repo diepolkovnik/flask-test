@@ -1,0 +1,41 @@
+{%extends 'base.html' %}
+
+
+{% block title %}
+<title> тестовая страница </title>
+{% endblock %}
+
+
+{% block body %}
+<section id="main" style="margin-top: 50px">
+    <h1 class="text-center" style="padding-bottom: 20px;">Обьявления</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">              
+                <ul class="list-group">
+                  {% for el in data %}
+                  <a href="{{ url_for('ProductProfile', id=el.id)}}">                  
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      {{el.title}}
+                      <span class="badge badge-primary badge-pill">руб. {{el.price}}</span>
+                    </li>
+                  </a>
+                  {%endfor%}
+                  </ul>
+            </div>
+            {%if current_user.customer == 1 %}
+            <div style="margin-top: 50px;" class="text-center col-12">
+              <a class="btn btn-primary btn-lg text-center" href="{{ url_for('index')}}">Смотреть заказы</a>
+            </div>
+            {%else %}
+            <div style="margin-top: 50px;" class="text-center col-12">
+              <a class="btn btn-primary btn-lg text-center" href="{{ url_for('product_create')}}">Добавить заказ</a>
+            </div>
+            {%endif%}
+            
+        </div>
+    </div>
+</section>
+  
+  
+{% endblock %}

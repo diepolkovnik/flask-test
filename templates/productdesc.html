@@ -1,0 +1,32 @@
+{%extends 'base.html' %}
+
+
+{% block title %}
+<title> Вход </title>
+{% endblock %}
+
+
+{% block body %}
+<section id="main" style="margin-top: 50px">
+    <h1 class="text-center" style="padding-bottom: 20px;">{{data.title}}</h1>
+    <div class="container">
+        <div class="row">
+            <div class="text-center col-6">
+              <h3>Описание задачи</h3>
+              <p>{{data.desc}}</p>
+              <p>цена: {{data.price}}</p> 
+                                        
+            </div>
+            <div class="col-6">
+              <h3 class="text-center">Список исполнителей</h3>
+              {%for user in users%}
+              <p class="text-center">{{user.login}}</p>
+
+              {%endfor%}
+            </div>
+        </div>
+    </div>
+</section>
+  
+  
+{% endblock %}

@@ -1,0 +1,40 @@
+{%extends 'base.html' %}
+
+
+{% block title %}
+<title> Вход </title>
+{% endblock %}
+
+
+{% block body %}
+<section id="main" style="margin-top: 50px">
+    <h1 class="text-center" style="padding-bottom: 20px;">Регистрация</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form method="POST">
+                    <div class="form-group">
+                      <label for="exampleInputlogin">Логин</label>
+                      <input type="login" name="login" class="form-control" id="exampleInputlogin" aria-describedby="emailHelp">                      
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">E-mail</label>
+                      <input type="login" name="E-mail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">                      
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Пароль</label>
+                      <input type="password"  name="password" class="form-control" id="exampleInputPassword1">
+                    </div>                    
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Повторите пароль</label>
+                      <input type="password"  name="password1" class="form-control" id="exampleInputPassword2">
+                    </div>                    
+                    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</section>
+  
+  
+{% endblock %}

@@ -1,0 +1,24 @@
+{%extends 'base.html' %}
+
+
+{% block title %}
+<title> тестовая страница </title>
+{% endblock %}
+
+
+{% block body %}
+<section id="main" style="margin-top: 50px">
+    <h1 class="text-center" style="padding-bottom: 20px;">Обьявления</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <img class="img-fluid" src="https://sun1-24.userapi.com/42MrvL-chPNM9_eyL8FfKG-sejE8_EWMh_NJ1Q/L65qzgImoms.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+  
+  
+{% endblock %}
+
+<a href="{{ url_for('product/<int:id>')}}"></a>

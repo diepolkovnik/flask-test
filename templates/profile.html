@@ -1,0 +1,80 @@
+{%extends 'base.html' %}
+
+
+{% block title %}
+<title> профиль {{current_user.login}} </title>
+{% endblock %}
+
+{% block body %}
+
+<section id="profile" style="margin-top: 50px;">
+    <div class="container">
+        <h1 class="text-center">Профиль {{current_user.login}}</h1>
+        <div class="row">
+            <div class="col-6">
+                <ul class="list-group">                    
+                    <li class="list-group-item">{{current_user.login}}</li>
+                    <li class="list-group-item">{{current_user.email}}</li>
+                    <li class="list-group-item">
+                        {%if current_user.cash == none %}
+                        <p>Введите свою сумму</p>
+                        {%else %}
+                            {{current_user.cash}}
+                        {%endif%}
+                    </li>       
+                    <li class="list-group-item">
+                        {%if current_user.customer == 1 %}
+                            <p>вы заказчик</p>
+                        {% else %}
+                            <p>вы исполнитель</p>
+                        {%endif%}
+                    </li>       
+                </ul>             
+            </div>
+            <div class="col-6">
+                <form method="POST">
+                <ul class="list-group">                    
+                    <li class="list-group-item">
+                        <input type="login" name="login" class="form-control" value="{{current_user.login}}" placeholder="изменить логин">
+                    </li>             
+                    <li class="list-group-item">
+                        <input type="password" name="password" class="form-control" value="{{current_user.password}}" placeholder="изменить пароль">
+                    </li>             
+                    <li class="list-group-item">
+                        <input type="mail" name="mail" class="form-control" value="{{current_user.email}}" placeholder="изменить email">
+                    </li>             
+                    <li class="list-group-item">
+                        <input type="text" name="cash" class="form-control" value="{{current_user.cash}}" placeholder="изменить количество денег">
+                    </li> 
+                      
+                    <li class="list-group-item">
+                        <select name="customer" class="form-control">
+                            <option disabled>Изменить статус</option>
+                            <option value="1">Я исполнитель</option>
+                            <option value="0">Я заказчик</option>
+                        </select>
+                    </li>           
+                      
+                    <button type="submit" class="btn btn-primary">Обновить данные</button>
+                    </ul>  
+                </form>      
+            </div>
+        </div>
+        {%if current_user.customer == 1 %}
+            <div class="row">
+                <div class="col-12">
+                    <a class="btn btn-primary btn-lg text-center" href="{{ url_for('index')}}">Смотреть заказы</a>
+                </div>
+            </div>
+        {%else %}
+            <div class="row">
+                <div class="col-12">
+                    <a class="btn btn-primary btn-lg text-center" href="{{ url_for('product_create')}}">Добавить заказ</a>
+                </div>
+            </div>
+        {%endif%}
+        
+    </div>
+</section>
+
+{% endblock %}
